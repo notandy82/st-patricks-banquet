@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+import datetime
 
 PAID_CHOICES = ((0, 'Not Paid'), (1, 'Payment Accepted'))
 MEAL_CHOICES = (('M', 'Meat'), ('V', 'Vegetarian'), ('C', 'Child'))
@@ -48,20 +49,11 @@ class Meal(models.Model):
     def __str__(self):
         return self.name
 
-
-class Posting(models.Model):
-    """Used to make input for easily changing date/location/pricing of event"""
-    location = models.CharField(max_length=30, null=False, blank=False)
+class Post(models.Model):
+    """Model for event information"""
+    event = models.CharField(max_length=40, null=False, blank=False)
+    location = models.CharField(max_length=40)
     date = models.DateField(null=False, blank=False)
     time = models.TimeField(null=False, blank=False)
-    adult_price = models.SmallIntegerField(null=False, blank=False)
-    child_price = models.SmallIntegerField(null=False, blank=False)
-
-    def save(self, *args, **kwargs):
-        total_records = Posting.objects.count()
-        if total_records >= 1:
-            raise DbLimitException({"message": "Please edit the current item"})
-        else:
-            super().save(*args, **kwargs)
-
-
+    adult_price = models.SmallIntegerField(default=150, null=False, blank=False)
+    child_price = models.SmallIntegerField(default=100, null=False, blank=False)

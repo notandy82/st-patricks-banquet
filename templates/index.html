@@ -2,6 +2,13 @@
 {% block title %}St Patrick's Day Oslo{% endblock %}
 
 {% block body %}
-
+{% for post in posts %}
+    {{ post.event }}
+    {{ post.location }}
+    {{ post.date }}
+    {{ post.time }}
+    {{ post.adult_price }} kr
+    {{ post.child_price }} kr
+{% endfor %}
 
 {% endblock %}
