@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 import datetime
 
-PAID_CHOICES = ((0, 'Not Paid'), (1, 'Payment Accepted'))
+PAID_CHOICES = (('NP', 'Not Paid'), ('PA', 'Payment Accepted'))
 MEAL_CHOICES = (('M', 'Meat'), ('V', 'Vegetarian'), ('C', 'Child'))
 
 class DbLimitException(BaseException):
@@ -17,7 +17,7 @@ class Booking(models.Model):
     adults = models.SmallIntegerField(null=False, blank=False)
     children = models.SmallIntegerField(null=True, blank=True)
     highchairs = models.SmallIntegerField(null=True, blank=True)
-    payment = models.IntegerField(choices=PAID_CHOICES, default=0)
+    payment = models.CharField(choices=PAID_CHOICES, default='Not Paid', max_length=12)
     additional_info = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 

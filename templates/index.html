@@ -2,13 +2,18 @@
 {% block title %}St Patrick's Day Oslo{% endblock %}
 
 {% block body %}
-{% for post in posts %}
-    {{ post.event }}
-    {{ post.location }}
-    {{ post.date }}
-    {{ post.time }}
-    {{ post.adult_price }} kr
-    {{ post.child_price }} kr
-{% endfor %}
+<div class="container">
+    <div class="container, center-align">
+        {% for post in posts %}
+            <h1>{{ post.event }}</h1>
+            <h2>{{ post.location }}</h2>
+            <h3>{{ post.date }}</h3>
+            <h3>{{ post.time }}</h3>
+            <h3>{{ post.adult_price }} kr</h3>
+            <h3>{{ post.child_price }} kr</h3>
+            
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
