@@ -18,7 +18,7 @@ class Booking(models.Model):
     children = models.SmallIntegerField(null=True, blank=True)
     highchairs = models.SmallIntegerField(null=True, blank=True)
     payment = models.CharField(choices=PAID_CHOICES, default='Not Paid', max_length=12)
-    additional_info = models.TextField()
+    additional_info = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

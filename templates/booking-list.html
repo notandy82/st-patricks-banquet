@@ -7,19 +7,21 @@
         <!--List of bookings -->
         <div class="col-12 mt-3">
             <div class="column">
-                {% for booking in booking_list %}
-                    <div class="card">
-                        <h4>{{ booking.booking_number }}</h4>
-                        <h5>{{ booking.reference_name }}</h5>
-                        <div>
-                            <p>{{ booking.adults }} adults, {{ booking.children }} children</p>                            
-                            <p>Highchairs needed: {{ booking.highchairs }}</p>                            
-                            <p>{{ booking.payment }}</p>
-                            <p>Additional Information: {{ booking.additional_info }}</p>
+                <div class="col-10">
+                    {% for booking in booking_list %}
+                        <div class="card">
+                            <h4>{{ booking.booking_number }}</h4>
+                            <h5>{{ booking.reference_name }}</h5>
+                            <div>
+                                <p>{{ booking.adults }} adults, {{ booking.children }} children</p>                            
+                                <p>Highchairs needed: {{ booking.highchairs }}</p>                            
+                                <p>{{ booking.payment }}</p>
+                                <p>Additional Information: {{ booking.additional_info }}</p>
+                            </div>
                         </div>
-                    </div>
 
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

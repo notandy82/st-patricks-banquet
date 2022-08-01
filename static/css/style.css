@@ -1,0 +1,7 @@
+.bg-custom-1 {
+    background-image: linear-gradient(to right, green, white 66%, orange);
+}
+
+.white-text {
+    color: white;
+}
