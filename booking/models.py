@@ -57,3 +57,7 @@ class Post(models.Model):
     time = models.TimeField(null=False, blank=False)
     adult_price = models.SmallIntegerField(default=150, null=False, blank=False)
     child_price = models.SmallIntegerField(default=100, null=False, blank=False)
+    slug = models.SlugField(null=True)
+
+    def __str__(self):
+        return self.event

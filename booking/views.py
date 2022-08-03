@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views import View
 from .models import Post, Booking
-from .forms import NewBooking
+from .forms import NewBooking, NewPost
 
 
 
@@ -32,15 +32,8 @@ class AddBookingView(CreateView):
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
 
-# class PostUpdateView(generic.UpdateView):
-#     template_name = 'post-update.html'
-#     model = Post
-
-#     fields = [
-#         "location",
-#         "date",
-#         "time",
-#         "adult_price",
-#         "child_price"
-#     ]
-#     success_url = "/"
+class PostUpdateView(UpdateView):
+    template_name = 'post-update.html'
+    model = Post
+    form_class = NewPost
+    success_url = "/"
