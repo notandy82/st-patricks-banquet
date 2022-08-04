@@ -51,13 +51,15 @@ class Meal(models.Model):
 
 class Post(models.Model):
     """Model for event information"""
+    id = models.BigAutoField(primary_key=True)
     event = models.CharField(max_length=40, null=False, blank=False)
     location = models.CharField(max_length=40)
     date = models.DateField(null=False, blank=False)
     time = models.TimeField(null=False, blank=False)
     adult_price = models.SmallIntegerField(default=150, null=False, blank=False)
     child_price = models.SmallIntegerField(default=100, null=False, blank=False)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=False)
+    
 
     def __str__(self):
         return self.event

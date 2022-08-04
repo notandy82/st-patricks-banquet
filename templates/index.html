@@ -11,8 +11,11 @@
             <h3>{{ post.time }}</h3>
             <h3>{{ post.adult_price }} kr</h3>
             <h3>{{ post.child_price }} kr</h3>
-            
+            {% if user.is_superuser %}
+            <a href="{% url 'post-update' post.slug %}" class="btn btn-info" role="button">Link Button</a>            
+            {% endif %}
         {% endfor %}
+        
     </div>
 </div>
 

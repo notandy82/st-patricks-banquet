@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, UpdateView
-from django.views.generic.edit import CreateView
+from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.views import View
 from .models import Post, Booking
-from .forms import NewBooking, NewPost
+from .forms import NewBooking, EditPost
 
 
 
@@ -32,8 +32,9 @@ class AddBookingView(CreateView):
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
 
-class PostUpdateView(UpdateView):
-    template_name = 'post-update.html'
+
+class PostEditView(UpdateView):
     model = Post
-    form_class = NewPost
-    success_url = "/"
+    form_class = EditPost
+    template_name = 'post-update.html'
+    success_url = '/'
