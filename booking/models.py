@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 import datetime
+from django.utils.text import slugify
+
 
 PAID_CHOICES = (('NP', 'Not Paid'), ('PA', 'Payment Accepted'))
 MEAL_CHOICES = (('M', 'Meat'), ('V', 'Vegetarian'), ('C', 'Child'))
@@ -20,7 +22,8 @@ class Booking(models.Model):
     payment = models.CharField(choices=PAID_CHOICES, default='Not Paid', max_length=12)
     additional_info = models.TextField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
-
+    
+    
     class Meta:
         ordering = ['created_on']
 
@@ -48,6 +51,7 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     """Model for event information"""

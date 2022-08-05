@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.views import View
 from .models import Post, Booking
 from .forms import NewBooking, EditPost
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -18,7 +19,7 @@ class PostView(TemplateView):
         return context
 
 
-class BookingListView(ListView):
+class BookingListView(LoginRequiredMixin, ListView):
 
     model = Booking
     template_name = 'booking-list.html'
@@ -26,15 +27,22 @@ class BookingListView(ListView):
     paginate_by = 10
 
 
-class AddBookingView(CreateView):
+class AddBookingView(LoginRequiredMixin, CreateView):
     model: Booking
     form_class = NewBooking
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
 
 
-class PostEditView(UpdateView):
+class PostEditView(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = EditPost
     template_name = 'post-update.html'
     success_url = '/'
+
+
+class BookingEditView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = NewBooking
+    template_name = 'booking-edit.html'
+    success_url = '/booking-list/'

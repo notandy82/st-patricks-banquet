@@ -6,3 +6,7 @@ admin.site.register(Meal)
 admin.site.register(Post)
 
 
+class ArticleAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("booking_number",)}
+
+
