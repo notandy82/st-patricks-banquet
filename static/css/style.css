@@ -1,7 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Proza+Libre&display=swap');
+
+body {
+    font-family: 'Proza Libre', sans-serif;
+}
+
+#title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+}
+
 .bg-custom-1 {
-    background-image: linear-gradient(to right, green, white 66%, orange);
+    background-image: linear-gradient(to right, green, white 50%, orange);
 }
 
 .white-text {
     color: white;
+}
+
+.btn-signup {
+    background-color: orange;
+    color: white;    
+}
+
+.orange-button {
+    background-color: orange;
+    color: white;
+}
+
+.green-button {
+    background-color: green;
+    color: white;
+}
+
+.navbar-nav {
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1230px) {
+    .bg-custom-1{
+        background-image: linear-gradient(to right, green, green);
+    }
 }
