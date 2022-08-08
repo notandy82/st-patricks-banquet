@@ -5,7 +5,7 @@ from django.views.generic.list import ListView
 from django.views import View
 from .models import Post, Booking
 from .forms import NewBooking, EditPost
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 
@@ -26,12 +26,24 @@ class BookingListView(LoginRequiredMixin, ListView):
     queryset = Booking.objects.all().order_by('created_on')
     paginate_by = 10
 
+ 
+
 
 class AddBookingView(LoginRequiredMixin, CreateView):
     model: Booking
     form_class = NewBooking
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.reference_name = self.request.user
+        obj.save()
+        return super().form_valid(form)
 
 
 class PostEditView(LoginRequiredMixin, UpdateView):

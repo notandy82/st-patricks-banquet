@@ -5,7 +5,7 @@ class NewBooking(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ('reference_name', 'adults', 'children', 'highchairs',
+        fields = ('adult_meat', 'adult_vegetarian', 'children', 'highchairs',
          'additional_info')
 
 

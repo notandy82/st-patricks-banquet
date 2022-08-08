@@ -36,8 +36,47 @@ body {
     font-weight: bold;
 }
 
+.details {
+    border-style: double;
+    max-width: 40%;
+    padding-bottom: 15px;
+    margin-top: 20px;
+}
+
+.book-form {
+    border-style: single;
+    max-width:60%;
+    padding-top: 20px;
+}
+
+footer {
+    color: white;
+    background-color: green;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.icons {    
+    color: white;
+    padding: 10px;
+}
+
 @media only screen and (max-width: 1230px) {
-    .bg-custom-1{
+    .bg-custom-1 {
         background-image: linear-gradient(to right, green, green);
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .details {
+        max-width: 60%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .details {
+        max-width: 90%;
     }
 }
