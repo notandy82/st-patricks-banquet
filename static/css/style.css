@@ -43,6 +43,11 @@ body {
     margin-top: 20px;
 }
 
+.receipt {
+    max-width: 40%;
+    margin: 15px;
+}
+
 .book-form {
     border-style: single;
     max-width:60%;
@@ -64,11 +69,17 @@ footer {
 }
 
 .edit-buttons {
-    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .card {
     padding-left: 10px;
+}
+
+.bottom {
+    margin-top: 10px;
 }
 
 @media only screen and (max-width: 1230px) {
@@ -86,5 +97,24 @@ footer {
 @media only screen and (max-width: 540px) {
     .details {
         max-width: 90%;
+        margin-bottom: 100px;
+    }
+
+    .bottom {
+        margin-bottom: 100px;
+    }
+
+    footer {
+        position: fixed;
+    }
+
+    .receipt {
+        margin-left: 5%;
+        margin-right: 5%;
+        max-width: 90%;
+    }
+
+    .receipt-bottom {
+        margin-bottom: 100px;
     }
 }

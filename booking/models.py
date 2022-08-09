@@ -6,10 +6,7 @@ from django.utils.text import slugify
 
 
 PAID_CHOICES = (('NP', 'Not Paid'), ('PA', 'Payment Accepted'))
-MEAL_CHOICES = (('M', 'Meat'), ('V', 'Vegetarian'), ('C', 'Child'))
 
-class DbLimitException(BaseException):
-    pass
 
 
 class Booking(models.Model):

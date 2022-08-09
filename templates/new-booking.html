@@ -5,10 +5,10 @@
 
 {% block body %}
 <div class="container">
-    <form method="post">
+    <form method="POST">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" class="btn green-button">
+        <input type="submit" class="btn orange-button bottom">
     </form>
 </div>
 {% endblock %}

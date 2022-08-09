@@ -5,29 +5,31 @@
 <div class="container-fluid">
     <div class="row">
         <!--List of bookings -->
-        <div class="col-12 mt-3">
-            <div class="column">
-                <div class="col-10">
-                    {% for booking in booking_list %}
-                        <div class="card">
-                            <h4>Booking nr: {{ booking.booking_number }}</h4>
-                            <h5>{{ booking.reference_name }}</h5>
-                            <div>
-                                <p>Adult meat: {{ booking.adult_meat }}</p>                            
-                                <p>Adult vegetarian: {{ booking.adult_veg }}</p>
-                                <p>Children: {{ booking.children }}</p>
-                                <p>Highchairs needed: {{ booking.highchairs }}</p>                            
-                                <p>{{ booking.payment }}</p>
-                                <p>Additional Information: {{ booking.additional_info }}</p>
-                            </div>
-                            <div class="text-center edit-buttons">                                
-                                <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button" role="button">Update</a></span>
-                                <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button" role="button">Delete</a></span>
-                            </div>
-                        </div>
-
-                    {% endfor %}
+        <div class="col-12 mt-3 left">
+            <div class="row">                
+                {% for booking in booking_list %}
+                <div class="card receipt">
+                
+                    <h4>Booking nr: {{ booking.booking_number }}</h4>
+                    <h5>{{ booking.reference_name }}</h5>
+                    <div>
+                        <p>Adult meat: {{ booking.adult_meat }}</p>
+                        <p>Adult vegetarian: {{ booking.adult_vegetarian }}</p>
+                        <p>Children: {{ booking.children }}</p>
+                        <p>Highchairs needed: {{ booking.highchairs }}</p>
+                        <p>{{ booking.payment }}</p>
+                        <p>Additional Information: {{ booking.additional_info }}</p>
+                    </div>                            
+                    <div class="text-center edit-buttons">
+                        <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons" role="button">Update</a></span>
+                        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons" role="button">Delete</a></span>
+                    </div>                    
                 </div>
+                {% if forloop.counter|divisibleby:2 %}
+                <div class="row">
+                {% endif %}
+                {% endfor %}
+                </div>                
             </div>
         </div>
     </div>
