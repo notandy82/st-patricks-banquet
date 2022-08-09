@@ -63,6 +63,14 @@ footer {
     padding: 10px;
 }
 
+.edit-buttons {
+    padding-bottom: 10px;
+}
+
+.card {
+    padding-left: 10px;
+}
+
 @media only screen and (max-width: 1230px) {
     .bg-custom-1 {
         background-image: linear-gradient(to right, green, green);

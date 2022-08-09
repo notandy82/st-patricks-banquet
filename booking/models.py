@@ -16,12 +16,12 @@ class Booking(models.Model):
     """Model for selecting number of attendees for each booking"""
     booking_number = models.BigAutoField(primary_key=True)
     reference_name = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
-    adult_meat = models.SmallIntegerField(null=False, blank=False)
-    adult_vegetarian = models.SmallIntegerField(null=False, blank=False)
+    adult_meat = models.SmallIntegerField(null=True, blank=True)
+    adult_vegetarian = models.SmallIntegerField(null=True, blank=True)
     children = models.SmallIntegerField(null=True, blank=True)
     highchairs = models.SmallIntegerField(null=True, blank=True)
     payment = models.CharField(choices=PAID_CHOICES, default='Not Paid', max_length=12)
-    additional_info = models.TextField(null=True, blank=True)
+    additional_info = models.TextField(null=True, blank=True, max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
     
     

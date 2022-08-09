@@ -13,14 +13,16 @@
                             <h4>Booking nr: {{ booking.booking_number }}</h4>
                             <h5>{{ booking.reference_name }}</h5>
                             <div>
-                                <p>{{ booking.adults }} adults, {{ booking.children }} children</p>                            
+                                <p>Adult meat: {{ booking.adult_meat }}</p>                            
+                                <p>Adult vegetarian: {{ booking.adult_veg }}</p>
+                                <p>Children: {{ booking.children }}</p>
                                 <p>Highchairs needed: {{ booking.highchairs }}</p>                            
                                 <p>{{ booking.payment }}</p>
                                 <p>Additional Information: {{ booking.additional_info }}</p>
                             </div>
-                            <div>
-                                <span><button class="btn green-button">Update</button></span>
-                                <span><button class="btn btn-danger">Delete</button></span>
+                            <div class="text-center edit-buttons">                                
+                                <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button" role="button">Update</a></span>
+                                <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button" role="button">Delete</a></span>
                             </div>
                         </div>
 

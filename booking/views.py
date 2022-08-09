@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views import View
 from .models import Post, Booking
@@ -26,8 +26,12 @@ class BookingListView(LoginRequiredMixin, ListView):
     queryset = Booking.objects.all().order_by('created_on')
     paginate_by = 10
 
- 
+    def get_queryset(self, *args, **kwargs):
+        return super().get_queryset(*args, **kwargs).filter(
+            reference_name=self.request.user
+        )
 
+ 
 
 class AddBookingView(LoginRequiredMixin, CreateView):
     model: Booking
@@ -54,7 +58,13 @@ class PostEditView(LoginRequiredMixin, UpdateView):
 
 
 class BookingEditView(LoginRequiredMixin, UpdateView):
-    model = Post
+    model = Booking
     form_class = NewBooking
     template_name = 'booking-edit.html'
     success_url = '/booking-list/'
+    
+
+class DeleteBookingView(LoginRequiredMixin, DeleteView):
+    model = Booking
+    template_name = 'delete-booking.html'
+    success_url = '/'
