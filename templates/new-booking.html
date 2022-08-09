@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block title %}New Booking{% endblock %}
 
+{% load crispy_forms_tags %}
 
 {% block body %}
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <input type="submit" class="btn green-button">
     </form>
 </div>

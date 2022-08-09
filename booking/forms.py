@@ -5,8 +5,13 @@ class NewBooking(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ('adult_meat', 'adult_vegetarian', 'children', 'highchairs',
-         'additional_info')
+        fields = (
+            'adult_meat',
+            'adult_vegetarian',
+            'children',
+            'highchairs',
+            'additional_info',
+            )
 
 
 class EditPost(forms.ModelForm):
