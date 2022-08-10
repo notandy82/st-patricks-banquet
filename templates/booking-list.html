@@ -22,12 +22,18 @@
                     </div>                            
                     <div class="text-center edit-buttons">
                         <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons" role="button">Update</a></span>
-                        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons" role="button">Delete</a></span>
+                        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons" role="button">Delete</a></span>                        
                     </div>                    
                 </div>
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="row">
                 {% endif %}
+                {% empty %}
+                <div>
+                    <h1>You have not made any bookings</h1>
+                    <div><a href="{% url 'new-booking' %}"><i class="fab fa-solid fa-party-horn"></i></a></div>
+                </div>
+                
                 {% endfor %}
                 </div>                
             </div>

@@ -9,8 +9,8 @@
             <h3>{{ post.location }}</h3>
             <h4>{{ post.date }}</h4>
             <h4>{{ post.time }}</h4>
-            <h4>{{ post.adult_price }} kr</h4>
-            <h4>{{ post.child_price }} kr</h4>
+            <h4>Adults: {{ post.adult_price }} kr</h4>
+            <h4>Children: {{ post.child_price }} kr</h4>
             {% if user.is_superuser %}
             <a href="{% url 'post-update' post.slug %}" class="btn orange-button" role="button">Update</a>            
             {% endif %}
