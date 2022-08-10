@@ -6,7 +6,9 @@
     <div class="container text-center details">
         {% for post in posts %}
             <h1 id="title">{{ post.event }}</h1>
-            <h3>{{ post.location }}</h3>
+            <h4>Brought to you by the Norwegian Irish Society</h4>
+            </br>
+            <h2>{{ post.location }}</h2>
             <h4>{{ post.date }}</h4>
             <h4>{{ post.time }}</h4>
             <h4>Adults: {{ post.adult_price }} kr</h4>
