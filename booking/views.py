@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 
+
 class PostView(TemplateView):
     template_name = 'index.html'
 
@@ -38,6 +39,7 @@ class AddBookingView(LoginRequiredMixin, CreateView):
     form_class = NewBooking
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
+    
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
@@ -48,6 +50,7 @@ class AddBookingView(LoginRequiredMixin, CreateView):
         obj.reference_name = self.request.user
         obj.save()
         return super().form_valid(form)
+        
 
 
 class PostEditView(LoginRequiredMixin, UpdateView):
@@ -67,4 +70,4 @@ class BookingEditView(LoginRequiredMixin, UpdateView):
 class DeleteBookingView(LoginRequiredMixin, DeleteView):
     model = Booking
     template_name = 'delete-booking.html'
-    success_url = '/'
+    success_url = '/booking-list/'
