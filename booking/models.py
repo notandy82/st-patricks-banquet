@@ -8,8 +8,15 @@ from django.utils.text import slugify
 PAID_CHOICES = (('NP', 'Not Paid'), ('PA', 'Payment Accepted'))
 
 
+class Common(models.Model):
+    adult_price = models.SmallIntegerField(default=150, null=False, blank=False)
+    child_price = models.SmallIntegerField(default=100, null=False, blank=False)
 
-class Booking(models.Model):
+    class Meta:
+        abstract = True
+
+
+class Booking(Common):
     """Model for selecting number of attendees for each booking"""
     booking_number = models.BigAutoField(primary_key=True)
     reference_name = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
@@ -17,9 +24,10 @@ class Booking(models.Model):
     adult_vegetarian = models.SmallIntegerField(null=True, blank=True)
     children = models.SmallIntegerField(null=True, blank=True)
     highchairs = models.SmallIntegerField(null=True, blank=True)
-    payment = models.CharField(choices=PAID_CHOICES, default='Not Paid', max_length=12)
+    payment = models.CharField(choices=PAID_CHOICES, default='NP', max_length=12)
     additional_info = models.TextField(null=True, blank=True, max_length=200)
     created_on = models.DateTimeField(auto_now_add=True)
+    
     
     
     class Meta:
@@ -30,15 +38,13 @@ class Booking(models.Model):
 
 
 
-class Post(models.Model):
+class Post(Common):
     """Model for event information"""
     id = models.BigAutoField(primary_key=True)
     event = models.CharField(max_length=40, null=False, blank=False)
     location = models.CharField(max_length=40)
     date = models.DateField(null=False, blank=False)
     time = models.TimeField(null=False, blank=False)
-    adult_price = models.SmallIntegerField(default=150, null=False, blank=False)
-    child_price = models.SmallIntegerField(default=100, null=False, blank=False)
     slug = models.SlugField(null=False)
     
 

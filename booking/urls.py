@@ -6,6 +6,7 @@ from .views import (
     PostEditView,
     BookingEditView,
     DeleteBookingView,
+    BookingDetailView,
     )
 
 urlpatterns = [
@@ -17,4 +18,6 @@ urlpatterns = [
         name='booking-edit'),
     path('delete-booking/<int:pk>/', DeleteBookingView.as_view(),
         name='booking-delete'),
+    path('booking-detail/<int:pk>/', BookingDetailView.as_view(),
+        name='booking-detail'),
 ]
