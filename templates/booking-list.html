@@ -8,6 +8,7 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 <h2 class="text-center">Your Bookings</h2>
+                <h4 class="text-center">Select your booking to view payment information</h4>                
                 {% for booking in booking_list %}                
                 <div class="card receipt">
                 
@@ -19,8 +20,7 @@
                         <p>Children: {{ booking.children }}</p>
                         <p>Highchairs needed: {{ booking.highchairs }}</p>
                         <p>{{ booking.payment }}</p>
-                        <p>Additional Information: {{ booking.additional_info }}</p>
-                        <p>Your cost: <strong id="price"></strong></p>
+                        <p>Additional Information: {{ booking.additional_info }}</p>                        
                     </div>                            
                     <div class="text-center edit-buttons">
                         <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons" role="button">Update</a></span>
@@ -37,6 +37,7 @@
                 </div>
                 
                 {% endfor %}
+                <h5 class="text-center">Payment can be made to account 1234.56.78901, please reference your booking number</h5>
                 </div>                
             </div>
         </div>

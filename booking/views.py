@@ -6,7 +6,7 @@ from django.views import View
 from .models import Post, Booking
 from .forms import NewBooking, EditPost
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.shortcuts import get_object_or_404
 
 
 
@@ -60,19 +60,29 @@ class PostEditView(LoginRequiredMixin, UpdateView):
     success_url = '/'
 
 
-class BookingEditView(LoginRequiredMixin, UpdateView):
+class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Booking
     form_class = NewBooking
     template_name = 'booking-edit.html'
     success_url = '/booking-list/'
+
+    def test_func(self):
+        return self.get_object().reference_name == self.request.user
     
 
-class DeleteBookingView(LoginRequiredMixin, DeleteView):
+class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Booking
     template_name = 'delete-booking.html'
     success_url = '/booking-list/'
 
+    def test_func(self):
+        return self.get_object().reference_name == self.request.user
 
-class BookingDetailView(DetailView):
+
+class BookingDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Booking
     template_name = 'booking_detail.html'
+
+    def test_func(self):
+        return self.get_object().reference_name == self.request.user
+    
