@@ -43,7 +43,7 @@ body {
 }
 
 #hero_image {
-    background: url('https://res.cloudinary.com/dqqpbdz1w/image/upload/v1660210110/img_1_1660042113462_bq6x3t.webp') no-repeat center center;
+    background: url('https://res.cloudinary.com/dqqpbdz1w/image/upload/v1660250251/005_3_p62ynl.jpg') no-repeat center center;
     background-size: 100%;
     width: 100%;
     height: 500px;
@@ -63,6 +63,7 @@ body {
     max-width: 40%;
     padding-bottom: 15px;
     margin-top: 20px;
+    margin-bottom: 100px;
 }
 
 .receipt {
@@ -79,7 +80,6 @@ body {
 footer {
     color: white;
     background-color: green;
-    position: absolute;
     bottom: 0px;
     width: 100%;
     text-align: center;
