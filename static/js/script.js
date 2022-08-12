@@ -1,7 +1,9 @@
-function printCost() {
-    readiness = "This seems to work"
-    console.log(readiness);
-}
+
+function printCost(name) {
+    name = "Erik"
+    console.log(name);
+  };
+
 
 var adultCost = parseInt(document.getElementById("adult-price").innerHTML);
 var childCost = parseInt(document.getElementById("child-price").innerHTML);
