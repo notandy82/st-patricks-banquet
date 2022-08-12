@@ -1,10 +1,3 @@
-
-function printCost(name) {
-    name = "Erik"
-    console.log(name);
-  };
-
-
 var adultCost = parseInt(document.getElementById("adult-price").innerHTML);
 var childCost = parseInt(document.getElementById("child-price").innerHTML);
 console.log(adultCost);
