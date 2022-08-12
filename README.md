@@ -79,8 +79,13 @@ The site uses few images.  All images used are of the location of the banquet.
 - Python
 
 ### Libraries and Programs
-- GitPod for development hosting
+- GitPod for building and editing code
+- GitHub for storing code and deploying site
 - Git for version control
+- Django as a site framework
+- Bootstrap for styling
+- Google Fonts for site fonts
+- Font Awesome for icons
 - Balsamiq for initial development
 
 
