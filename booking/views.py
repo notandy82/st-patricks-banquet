@@ -1,17 +1,13 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Booking
 from .forms import NewBooking, EditPost
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import get_object_or_404
-
-
 
 
 class PostView(TemplateView):
+    """ View to display event information on front page """
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
@@ -21,7 +17,7 @@ class PostView(TemplateView):
 
 
 class BookingListView(LoginRequiredMixin, ListView):
-
+    """ View to list all bookings made by a user """
     model = Booking
     template_name = 'booking-list.html'
     queryset = Booking.objects.all().order_by('created_on')
@@ -32,14 +28,13 @@ class BookingListView(LoginRequiredMixin, ListView):
             reference_name=self.request.user
         )
 
- 
 
 class AddBookingView(LoginRequiredMixin, CreateView):
-    model: Booking
+    """ View to allow user to create a new booking """
+    model = Booking
     form_class = NewBooking
     template_name = 'new-booking.html'
     success_url = '/booking-list/'
-    
 
     def dispatch(self, request, *args, **kwargs):
         self.request = request
@@ -50,17 +45,21 @@ class AddBookingView(LoginRequiredMixin, CreateView):
         obj.reference_name = self.request.user
         obj.save()
         return super().form_valid(form)
-        
 
 
-class PostEditView(LoginRequiredMixin, UpdateView):
+class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ View to allow Admin to update the event information """
     model = Post
     form_class = EditPost
     template_name = 'post-update.html'
     success_url = '/'
 
+    def test_func(self):
+        return self.request.user.is_superuser
+
 
 class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ View to allow user to update their booking """
     model = Booking
     form_class = NewBooking
     template_name = 'booking-edit.html'
@@ -68,9 +67,10 @@ class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.get_object().reference_name == self.request.user
-    
+
 
 class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """ View to allow user to delete their booking """
     model = Booking
     template_name = 'delete-booking.html'
     success_url = '/booking-list/'
@@ -80,9 +80,9 @@ class DeleteBookingView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class BookingDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    """ View to allow user to see individual booking information """
     model = Booking
     template_name = 'booking_detail.html'
 
     def test_func(self):
         return self.get_object().reference_name == self.request.user
-    

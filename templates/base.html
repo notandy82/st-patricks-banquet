@@ -1,30 +1,36 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        <title>{% block title %}Base{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        
-    </head>
-    <body>
-        
-        <nav class="navbar navbar-expand-lg navbar-light bg-custom-1">
-            <div class="container-fluid">
-                <a class="navbar-brand white-text" href="{% url 'home' %}">St Patrick's Day</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        
-                        {% if user.is_authenticated %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+    <title>{% block title %}Base{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <div id="page-container">
+        <div id="content-wrap">
+            <nav class="navbar navbar-expand-lg navbar-light bg-custom-1">
+                <div class="container-fluid">
+                    <a class="navbar-brand white-text" href="{% url 'home' %}">St Patrick's Day</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarText">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                            {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link white-text" href="{% url 'account_logout' %}">Logout</a>
                             </li>
@@ -41,53 +47,56 @@
                             <li class="nav-item">
                                 <a class="nav-link white-text" href="{% url 'account_login' %}">Login</a>
                             </li>
-                        {% endif %}                    
-                    </ul>                
-                </div>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-
-                        </button>
+                            {% endif %}
+                        </ul>
                     </div>
+                </div>
+            </nav>
 
-                    {% endfor %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                            {{ message | safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+
+                            </button>
+                        </div>
+
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        {% block body %}
-        {% endblock %}
-        
-        
-    </body>
-    <footer>
-        <div>
-            <a href="https://www.facebook.com/norwegianirishsociety" target="_blank" rel="noopener" title="Link opens in a new tab"><i class="fab fa-facebook icons"></i></a>
-            <a href="https://twitter.com/NorwegianIrSoc?fbclid=IwAR2NwjO8uKURnclzF_0NrIy5MgCGj0OtBp-7cLvGZFdV1_8pzQ4-gHYj894" target="_blank" rel="noopener" title="Link opens in a new tab"><i class="fab fa-brands fa-twitter icons"></i></a>
-            <a href="https://www.youtube.com/channel/UCJXXL4llcxK9chTO6aBuDhQ" target="_blank" rel="noopener" title="Link opens in a new tab"><i class="fab fa-brands fa-youtube icons"></i></a>
-        </div>
-        <div>
-            <p class="text-center">Copyright 2022 | Andrew Stanek</p>
-        </div>
-    </footer>
 
+            {% block body %}
+            {% endblock %}
+        </div>
+        <footer>
+            <div>
+                <a href="https://www.facebook.com/norwegianirishsociety" target="_blank" rel="noopener"
+                    title="Link opens in a new tab"><i class="fab fa-facebook icons"></i></a>
+                <a href="https://twitter.com/NorwegianIrSoc?fbclid=IwAR2NwjO8uKURnclzF_0NrIy5MgCGj0OtBp-7cLvGZFdV1_8pzQ4-gHYj894"
+                    target="_blank" rel="noopener" title="Link opens in a new tab"><i
+                        class="fab fa-brands fa-twitter icons"></i></a>
+                <a href="https://www.youtube.com/channel/UCJXXL4llcxK9chTO6aBuDhQ" target="_blank" rel="noopener"
+                    title="Link opens in a new tab"><i class="fab fa-brands fa-youtube icons"></i></a>
+            </div>
+            <div>
+                <p class="text-center">Copyright 2022 | Andrew Stanek</p>
+            </div>
+        </footer>
+    </div>
     <script>
-        setTimeout(function() {
+        setTimeout(function () {
             let messages = document.getElementById("msg");
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 3000);
     </script>
-
+    
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/a384970ec9.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/script.js' %}"></script>
+</body>
 </html>

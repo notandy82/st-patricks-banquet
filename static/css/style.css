@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Proza+Libre&display=swap');
 
-body, html {
+body,
+html {
     height: 100%;
 }
 
@@ -23,7 +24,7 @@ body {
 
 .btn-signup {
     background-color: orange;
-    color: white;    
+    color: white;
 }
 
 .orange-button {
@@ -37,7 +38,7 @@ body {
 }
 
 .hero-outer {
-    height: 500px;
+    height: 300px;
     width: 100%;
     overflow: hidden;
 }
@@ -46,7 +47,7 @@ body {
     background: url('https://res.cloudinary.com/dqqpbdz1w/image/upload/v1660250251/005_3_p62ynl.jpg') no-repeat center center;
     background-size: 100%;
     width: 100%;
-    height: 500px;
+    height: 300px;
 }
 
 .faded {
@@ -58,12 +59,17 @@ body {
     font-weight: bold;
 }
 
-.details {
+.event-details {
     border-style: double;
     max-width: 40%;
+    padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 20px;
     margin-bottom: 100px;
+}
+
+.booking-form {
+    max-width: 60%;
 }
 
 .receipt {
@@ -72,9 +78,18 @@ body {
 }
 
 .book-form {
-    border-style: single;
-    max-width:60%;
+    border-style: groove;
+    max-width: 60%;
     padding-top: 20px;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 100px;
 }
 
 footer {
@@ -82,10 +97,12 @@ footer {
     background-color: green;
     bottom: 0px;
     width: 100%;
+    height: 100px;
     text-align: center;
+    position: absolute;
 }
 
-.icons {    
+.icons {
     color: white;
     padding: 10px;
 }
@@ -108,6 +125,10 @@ footer {
 @media only screen and (max-width: 1230px) {
     .bg-custom-1 {
         background-image: linear-gradient(to right, green, green);
+    }
+
+    .hero-outer {
+        display: none;
     }
 }
 
@@ -139,5 +160,9 @@ footer {
 
     .receipt-bottom {
         margin-bottom: 100px;
+    }
+
+    .booking-form {
+        max-width: 90%;
     }
 }

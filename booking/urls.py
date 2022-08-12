@@ -14,10 +14,19 @@ urlpatterns = [
     path('new-booking/', AddBookingView.as_view(), name='new-booking'),
     path('booking-list/', BookingListView.as_view(), name='booking-list'),
     path('<slug:slug>/edit/', PostEditView.as_view(), name='post-update'),
-    path('edit-booking/<int:pk>/', BookingEditView.as_view(),
-        name='booking-edit'),
-    path('delete-booking/<int:pk>/', DeleteBookingView.as_view(),
-        name='booking-delete'),
-    path('booking-detail/<int:pk>/', BookingDetailView.as_view(),
-        name='booking-detail'),
+    path(
+        'edit-booking/<int:pk>/',
+        BookingEditView.as_view(),
+        name='booking-edit'
+    ),
+    path(
+        'delete-booking/<int:pk>/',
+        DeleteBookingView.as_view(),
+        name='booking-delete'
+    ),
+    path(
+        'booking-detail/<int:pk>/',
+        BookingDetailView.as_view(),
+        name='booking-detail'
+    ),
 ]

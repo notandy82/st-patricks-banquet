@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Edit Booking{% endblock %}
 
+{% load crispy_forms_tags %}
 
 {% block body %}
-<div class="container-fluid text-center book-form">
+<div class="container booking-form">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        
-        <input type="submit" class="btn green-button">
-        
+        {{ form|crispy }}
+
+        <input type="submit" class="btn green-button bottom">
+
     </form>
 </div>
 {% endblock %}

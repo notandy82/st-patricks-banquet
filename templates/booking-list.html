@@ -8,11 +8,12 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 <h2 class="text-center">Your Bookings</h2>
-                <h4 class="text-center">Select your booking to view payment information</h4>                
-                {% for booking in booking_list %}                
+                <h4 class="text-center">Select your booking to view payment information</h4>
+                {% for booking in booking_list %}
                 <div class="card receipt">
-                
-                    <h4><a href="{% url 'booking-detail' booking.pk %}">Booking nr: {{ booking.booking_number }}</a></h4>
+
+                    <h4><a href="{% url 'booking-detail' booking.pk %}">Booking nr: {{ booking.booking_number }}</a>
+                    </h4>
                     <h5>{{ booking.reference_name }}</h5>
                     <div>
                         <p>Adult meat: {{ booking.adult_meat }}</p>
@@ -20,25 +21,31 @@
                         <p>Children: {{ booking.children }}</p>
                         <p>Highchairs needed: {{ booking.highchairs }}</p>
                         <p>{{ booking.payment }}</p>
-                        <p>Additional Information: {{ booking.additional_info }}</p>                        
-                    </div>                            
+                        <p>Additional Information: {{ booking.additional_info }}</p>
+                    </div>
                     <div class="text-center edit-buttons">
-                        <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons" role="button">Update</a></span>
-                        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons" role="button">Delete</a></span>                        
-                    </div>                    
-                </div>                
+                        <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons"
+                                role="button">Update</a></span>
+                        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons"
+                                role="button">Delete</a></span>
+                    </div>
+                </div>
                 {% if forloop.counter|divisibleby:2 %}
                 <div class="row">
-                {% endif %}
-                {% empty %}
-                <div class="text-center">
-                    <h3>You have not made any bookings</h1>
-                    <div><a href="{% url 'new-booking' %}"><img src="https://res.cloudinary.com/dqqpbdz1w/image/upload/v1660204115/grand_hotel_cizkrc.jpg" alt="Grand Hotel Oslo ballroom, Credit: Sarah Fawsitt" class="faded" title="Click to book"></a></div>
+                    {% endif %}
+                    {% empty %}
+                    <div class="text-center">
+                        <h3>You have not made any bookings</h1>
+                            <div><a href="{% url 'new-booking' %}"><img
+                                        src="https://res.cloudinary.com/dqqpbdz1w/image/upload/v1660204115/grand_hotel_cizkrc.jpg"
+                                        alt="Grand Hotel Oslo ballroom, Credit: Sarah Fawsitt" class="faded"
+                                        title="Click to book"></a></div>
+                    </div>
+
+                    {% endfor %}
+                    <h5 class="text-center">Payment can be made to account 1234.56.78901, please reference your booking
+                        number</h5>
                 </div>
-                
-                {% endfor %}
-                <h5 class="text-center">Payment can be made to account 1234.56.78901, please reference your booking number</h5>
-                </div>                
             </div>
         </div>
     </div>

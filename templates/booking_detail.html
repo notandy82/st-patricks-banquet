@@ -2,7 +2,7 @@
 {% block title %}Your booking{% endblock %}
 {% block body %}
 <div class="card receipt">
-                
+
     <h4>Booking nr: {{ booking.booking_number }}</h4>
     <h5>{{ booking.reference_name }}</h5>
     <div>
@@ -15,10 +15,12 @@
         <p>Cost per adult: <strong id="adult-price">{{ booking.adult_price }}</strong> kr</p>
         <p>Cost per child: <strong id="child-price">{{ booking.child_price }}</strong> kr</p>
         <p>Your cost: <strong id="total-cost"></strong> kr</p>
-    </div>                            
+    </div>
     <div class="text-center edit-buttons">
-        <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons" role="button">Update</a></span>
-        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons" role="button">Delete</a></span>                        
-    </div>                    
+        <span><a href="{% url 'booking-edit' booking.pk %}" class="btn green-button edit-buttons"
+                role="button">Update</a></span>
+        <span><a href="{% url 'booking-delete' booking.pk %}" class="btn orange-button edit-buttons"
+                role="button">Delete</a></span>
+    </div>
 </div>
 {% endblock %}
