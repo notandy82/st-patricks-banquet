@@ -87,6 +87,8 @@ The site uses few images.  All images used are of the location of the banquet.
 - Google Fonts for site fonts
 - Font Awesome for icons
 - Balsamiq for initial development
+- Favicon.io for favicon generating
+- Heroku for project deployment
 
 
 ## Testing
@@ -100,28 +102,23 @@ The site uses few images.  All images used are of the location of the banquet.
    - Function with the largest signature take 0 arguments while the median is 0.
    - Largest function has 10 statements in it while the median is 4.
    - The most complex function has a cyclomatic complexity value of 19 while the median is 1.
-### Bug Fixes
-- Following the addition and testing of an exit button, it was discovered that while the scores of a new game would be set to zero, further points would be added to the score of the last game which would then be displayed.  Attempts to fix this were unsuccessful, so the scoring system was removed and built again.
-- While improving responsiveness of the site for smaller devices, an issue was discovered where the game page would not load.  This was fixed by removing the buttons from a div.
 
 
-## Deployment
-- The site was deployed to GitHub Pages as follows:
-  - Open the repository on GitHub
-  - Navigate to the settings tab
-  - Select Pages in the left-hand menu
-  - In source, select main branch and save
+
+
 
 ## Credits
-- Media
-  - All photos were taken by Andrew Stanek
-- Content
-  - Code for scoring adapted from https://sebhastian.com/rock-paper-scissors-javascript/
-  - setTimeout function from w3schools
-  - Code to hide elements by class from stackoverflow user c.P.u1
+### Media
+- Hero image taken by Rachel Marsili
+- Additional photo taken by Sarah Fawsitt
+
+### Content
+- View clarification provided by Django documentation and [Classy Class-Based Views](https://ccbv.co.uk/)
+  
 - Thanks
   - Thanks to my family for their support and patience
   - Thanks to my mentor Adegbenga Adeye for his guidance
+  - Meow to Polly for being great company and a fantastic stress reliever
 
 ## Contact
 Created by Andrew Stanek (notandystanek@gmail.com)

@@ -1,3 +1,7 @@
+function printCost() {
+    readiness = "This seems to work"
+    console.log(readiness);
+}
 
 var adultCost = parseInt(document.getElementById("adult-price").innerHTML);
 var childCost = parseInt(document.getElementById("child-price").innerHTML);
@@ -5,13 +9,13 @@ console.log(adultCost);
 console.log(childCost);
 
 if (document.getElementById("a-meat").innerHTML === "None") {
-    adultMeat = 0;
+    var adultMeat = 0;
 } else {
-    adultMeat = parseInt(document.getElementById("a-meat").innerHTML);
+    var adultMeat = parseInt(document.getElementById("a-meat").innerHTML);
 }
 
 if (document.getElementById("a-veg").innerHTML === "None") {
-    adultVeg = 0;
+    var adultVeg = 0;
 } else {
     var adultVeg = parseInt(document.getElementById("a-veg").innerHTML);
 }
