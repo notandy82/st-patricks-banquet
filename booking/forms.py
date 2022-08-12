@@ -16,8 +16,10 @@ class NewBooking(forms.ModelForm):
             )
         widgets = {
             'additional_info': forms.Textarea(
-                attrs={'placeholder': 'Please include any\
-                    dietary restrictions'}),
+                attrs={
+                    'placeholder': 'Please include any dietary restrictions'
+                }
+            ),
         }
 
 
