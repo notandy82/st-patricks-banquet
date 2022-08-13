@@ -9,7 +9,7 @@ admin.site.register(Post)
 
 @admin.register(Booking)
 class BookingAdmin(ModelAdminTotals):
-    """ Displays totals of all bookings in admin panel """
+    """ Displays totals of all bookings in admin panel, package created by stack overflow user douwe-van-der-meij """
     list_display = (
         "booking_number",
         "adult_meat",
